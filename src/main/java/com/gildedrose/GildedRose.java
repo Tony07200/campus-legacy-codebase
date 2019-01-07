@@ -8,56 +8,78 @@ public class GildedRose {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals("Aged Brie")
-                    && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (items[i].quality > 0) {
-                    if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                        items[i].quality = items[i].quality - 1;
+        for (Item item: items) {
+            if (!isCheese(item) && !isBackstage(item)) {
+                if (item.quality > 0) {
+                    if (!isLegendary(item)) {
+                        decreaseQuality(item);
+                        if (isConjured(item)){
+                            decreaseQuality(item);
+                        }
                     }
                 }
             } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
-
-                    if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
+                if (item.quality < 50) {
+                    increaseQuality(item);
+                    if (isBackstage(item)) {
+                        if (item.sellIn < 11) {
+                            increaseQuality(item);
                         }
-
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
+                        if (item.sellIn < 6) {
+                            increaseQuality(item);
                         }
                     }
                 }
             }
-
-            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
+            if (!isLegendary(item)) {
+                item.sellIn = item.sellIn - 1;
             }
-
-            if (items[i].sellIn < 0) {
-                if (!items[i].name.equals("Aged Brie")) {
-                    if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].quality > 0) {
-                            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                                items[i].quality = items[i].quality - 1;
+            if (item.sellIn < 0) {
+                if (!isCheese(item)) {
+                    if (!isBackstage(item)) {
+                        if (item.quality > 0) {
+                            if (!isLegendary(item)) {
+                                decreaseQuality(item);
+                                if (isConjured(item)){
+                                    decreaseQuality(item);
+                                }
                             }
                         }
                     } else {
-                        items[i].quality = items[i].quality - items[i].quality;
+                        item.quality = 0;
                     }
                 } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
+                       increaseQuality(item);
                 }
             }
         }
+    }
+
+    private void decreaseQuality(Item item){
+        item.quality --;
+        if (item.quality <= 0) item.quality = 0;
+    }
+
+    private void increaseQuality(Item item){
+        if(item.quality <= 0) item.quality = 0;
+        item.quality ++;
+        if(item.quality >=50) item.quality = 50;
+    }
+
+    private boolean isConjured(Item item){
+        return item.name.contains("Conjured");
+    }
+
+    private boolean isCheese(Item item){
+        return item.name.contains("Aged") || item.name.contains("Brie");
+    }
+
+    private boolean isBackstage(Item item){
+        return item.name.contains("Backstage") || item.name.contains("pass") || item.name.contains("concert");
+    }
+
+    private boolean isLegendary(Item item){
+        return item.name.contains("Legend") || item.name.contains("Sulfuras") || item.name.contains("Ragnaros");
     }
 
     public Item[] getItems() {
