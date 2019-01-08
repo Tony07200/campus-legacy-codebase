@@ -77,7 +77,7 @@ public class GildedRose {
     }
 
     private boolean isCheese(Item item){
-        return item.name.contains("Aged") || item.name.contains("Brie");
+        return item.name.equals("Aged Brie");
     }
 
     private boolean isBackstage(Item item){
