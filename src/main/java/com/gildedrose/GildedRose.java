@@ -73,7 +73,7 @@ public class GildedRose {
     }
 
     private boolean isConjured(Item item){
-        return item.name.contains("Conjured");
+        return item.name.startsWith("Conjured");
     }
 
     private boolean isCheese(Item item){
