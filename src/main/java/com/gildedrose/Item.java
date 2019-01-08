@@ -39,7 +39,7 @@ public class Item {
     public void updateConjured(){
         this.decreaseQuality();
         this.decreaseQuality();
-        if(this.sellIn<0){
+        if(this.sellIn < 0){
             this.decreaseQuality();
             this.decreaseQuality();
         }
@@ -61,7 +61,7 @@ public class Item {
     }
 
     public void decrementSelling(){
-        this.sellIn --;
+        this.sellIn = this.sellIn - 1;
     }
 
     public void updateNormal(){
