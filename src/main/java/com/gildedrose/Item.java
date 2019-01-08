@@ -66,6 +66,9 @@ public class Item {
 
     public void updateNormal(){
         this.decreaseQuality();
+        if(this.sellIn <0){
+            this.decreaseQuality();
+        }
     }
 
 
