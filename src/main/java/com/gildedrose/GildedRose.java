@@ -16,23 +16,18 @@ public class GildedRose {
         for (Item item : items) {
             logger.info(item.toString());
             item.decrementSelling();
-            String typeItem = item.isType();
-            switch (typeItem) {
-                case "Conjured":
-                    item.updateConjured();
-                    break;
-                case "Cheese":
-                    item.updateCheese();
-                    break;
-                case "Concert":
-                    item.updateConcert();
-                    break;
-                case "Legendary":
-                    break;
-                default:
-                    item.updateNormal();
-                    break;
-            }
+            chooseAction(item);
+        }
+    }
+
+    public void chooseAction(Item item){
+        String typeItem = item.isType();
+        switch (typeItem) {
+            case "Conjured": item.updateConjured(); break;
+            case "Cheese": item.updateCheese(); break;
+            case "Concert": item.updateConcert(); break;
+            case "Legendary": break;
+            default: item.updateNormal(); break;
         }
     }
 
