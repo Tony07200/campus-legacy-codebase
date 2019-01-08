@@ -28,7 +28,8 @@ public class Item {
     public String isType(){
         if(this.name.startsWith("Conjured")){ return "Conjured"; }
         else if(this.name.equals("Aged Brie")){ return "Cheese";}
-        else if( this.name.equals("Backstage passes to a TAFKAL80ETC concert")){ return "Concert";}
+        else if( this.name.equals("Backstage passes to a TAFKAL80ETC concert"))
+        { return "Concert";}
         else if ( this.name.equals("Sulfuras, Hand of Ragnaros")){ return "Legendary";}
         else {
             return "Normal";
