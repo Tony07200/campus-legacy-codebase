@@ -85,7 +85,7 @@ public class GildedRose {
     }
 
     private boolean isLegendary(Item item){
-        return  item.name.contains("Sulfuras") || item.name.contains("Ragnaros");
+        return  item.name.equals("Sulfuras, Hand of Ragnaros");
     }
 
     public Item[] getItems() {
