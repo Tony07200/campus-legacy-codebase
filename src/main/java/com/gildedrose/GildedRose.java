@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class GildedRose {
     Item[] items;
 
@@ -7,8 +10,11 @@ public class GildedRose {
         this.items = items;
     }
 
+    public static final Logger logger = LoggerFactory.getLogger(GildedRose.class);
+
     public void updateQuality() {
         for (Item item: items) {
+            logger.info(item.toString());
             if (!isCheese(item) && !isBackstage(item)) {
                 if (item.quality > 0) {
                     if (!isLegendary(item)) {
