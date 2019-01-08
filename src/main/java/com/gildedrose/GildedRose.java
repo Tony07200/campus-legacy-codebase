@@ -81,7 +81,7 @@ public class GildedRose {
     }
 
     private boolean isBackstage(Item item){
-        return item.name.contains("Backstage") || item.name.contains("pass") || item.name.contains("concert");
+        return item.name.contains("Backstage") || item.name.contains("pass");
     }
 
     private boolean isLegendary(Item item){
