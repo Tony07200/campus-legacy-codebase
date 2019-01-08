@@ -60,6 +60,10 @@ public class Item {
 
     }
 
+    public void updateLegendary(){
+        this.sellIn = this.sellIn + 1;
+    }
+
     public void decrementSelling(){
         this.sellIn = this.sellIn - 1;
     }
