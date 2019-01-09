@@ -48,7 +48,7 @@ public class GildedRose {
                     item.quality--;
                 }
             } else if (item.sellIn < 0) {
-                item.quality++;
+                if(item.quality < 50) {item.quality++;}
             }
         } else {
             item.quality = QualityDown(item);
